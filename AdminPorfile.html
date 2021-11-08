@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/Fronted/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/Fronted/css/Home.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+  <title>Mi Perfil</title>
+</head>
+
+<body onload="GetPostsUser()">
+  <nav class="naVEVAR navbar navbar-expand-lg">
+    <h1>Ublog</h1>
+    <h3 style="margin-right: 40px;" id="NameLogged">Perfil de </h3>
+    <div class="close">
+      <a href="">
+        <i class="bi bi-box-arrow-left"></i>
+        <label>Cerrar Sesion</label>
+      </a>
+    </div>
+
+  </nav>
+
+
+  <div class="sidebar">
+    <a href="Home.html"><i class="large material-icons" style="font-size: 36px;">home</i> <br>Home</a>
+    <a href="NewPost.html"><i class="large material-icons" style="font-size: 36px;">add_to_photos</i><br>Publicar
+      Post</a>
+    <a class="active" href="Porfile.html"><i class="large material-icons"
+        style="font-size: 36px;">account_circle</i><br>Mi Perfil</a>
+    <a href="Modify.html"><i class="large material-icons" style="font-size: 36px;">edit</i><br>Modificar Mi Perfil</a>
+    <a href="Users.html"><i class="large material-icons" style="font-size: 36px;">people</i><br>Usuarios</a>
+    <a href="Uploads.html"><i class="large material-icons" style="font-size: 36px;">file_upload</i><br>Carga Masiva</a>
+    <a href="#about"><i class="large material-icons" style="font-size: 36px;">picture_as_pdf</i><br>Reportes</a>
+
+  </div>
+
+  <div id="PostsHere">/</div>
+
+
+  <footer class="page-footerS">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12" style="margin-bottom: 0px;">
+          <h5 class="white-text">Acerca De</h5>
+          <p class="grey-text text-lighten-4">Ublog es un sitio web periódicamente actualizado que recopila
+            cronológicamente
+            textos o artículos de uno o varios autores, apareciendo primero el más reciente, donde el autor conserva
+            siempre la libertad de dejar publicado lo que crea pertinente. </p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Contáctanos</h5>
+          <ul class="wrapper">
+            <li><a href="https://www.facebook.com/VosNathan"><i class="bi bi-facebook"></i>Facebook</a></li>
+            <li><a href="mailto:nathanvaldez413@gmail.com"><i class="bi bi-at"></i></i>Email</a></li>
+            <li><a href="https://github.com/vosnathan"><i class="bi bi-github"></i>GitHub</a></li>
+            <li><a href="https://www.youtube.com/channel/UCuO3svYiU7e_l3w3EDUwDLQ/videos"><i
+                  class="bi bi-youtube"></i>Youtube</a></li>
+            <li><a href="https://www.instagram.com/__nathanv/"><i class="bi bi-instagram"></i>Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © Nathan Valdez 202001568 IPC1 USAC 2S2021
+      </div>
+    </div>
+  </footer>
+
+
+
+
+  <script>
+
+    function GetPostsUser() {
+
+      var username = sessionStorage.getItem('UserPorfile')
+
+      NameLogged.innerHTML += username
+
+      var AllPosts = document.querySelector('#PostsHere')
+      var cadena = ''
+
+      fetch(`http://localhost:3000/PostsUser/${username}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        }
+      })
+        .then(res => res.json())
+        .catch(err => {
+          console.error('Error:', err)
+          alert("Ocurrio un error, ver la consola")
+        })
+        .then(response => {
+          console.log(response);
+
+          response.forEach(element => {
+
+            if (element.type == 'video') {
+
+              cadena += `<article class="GeneralPost" style="height: auto;">
+    <div class="NameUser">
+      <h3 style="color: aliceblue;">${element.nameAuthor}</h3>
+    </div>
+    <div class="datePost">
+      <label for="datePost">${element.date}</label>
+      <label for="datePost" style="margin-left: 40px;">Categoria: ${element.category}</label>
+    </div>
+    <div class="ContentPost">
+      <iframe width="480" height="270" src="${element.url}">
+      </iframe>
+    </div>
+    <div class="LikesPost">
+      <div style="float: left">
+        <input type="checkbox" class="btn-check" id="btn-check-outlined" value=${element.serienumber} onclick="Liked(this)">
+        <label class="btn btn-outline-primary" for="btn-check-outlined">
+          <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <path
+              d="M91.6 13A28.7 28.7 0 0 0 51 13l-1 1-1-1A28.7 28.7 0 0 0 8.4 53.8l1 1L50 95.3l40.5-40.6 1-1a28.6 28.6 0 0 0 0-40.6z" />
+          </svg>
+          Me Gusta
+        </label>
+      </div>
+      <div>
+        <label class="NumLikes" for="">${element.numLikes}</label>
+      </div>
+    </div>
+  </article>`
+
+            }
+            else if (element.type == 'image') {
+
+              cadena += `<article class="GeneralPost" style="height: auto;">
+    <div class="NameUser">
+      <h3 style="color: aliceblue;">${element.nameAuthor}</h3>
+    </div>
+    <div class="datePost">
+      <label for="datePost">${element.date}</label>
+      <label for="datePost" style="margin-left: 40px;">Categoria: ${element.category}</label>
+    </div>
+    <div class="ContentPost">
+      <img src="${element.url}" alt="">
+    </div>
+    <div class="LikesPost">
+      <div style="float: left;">
+        <input type="checkbox" class="btn-check" value=${element.serienumber} onclick="Liked(this)">
+        <label class="btn btn-outline-primary" for="btn-check-outlined">
+          <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <path
+              d="M91.6 13A28.7 28.7 0 0 0 51 13l-1 1-1-1A28.7 28.7 0 0 0 8.4 53.8l1 1L50 95.3l40.5-40.6 1-1a28.6 28.6 0 0 0 0-40.6z" />
+          </svg>
+          Me Gusta
+        </label>
+      </div>
+      <div>
+        <label class="NumLikes" for="" style="margin-right: 1px;"">${element.numLikes}</label>
+      </div>
+        <button value=${element.serienumber} onclick="Eliminar(this)" type="button" class="btn btn-outline-danger">Eliminar</button>
+        <button value=${element.serienumber} onclick="Modificar(this)" type="button" class="btn btn-outline-warning">Modificar</button>
+    </div>
+  </article>`
+
+            }
+
+          });
+
+          AllPosts.innerHTML = cadena
+
+        })
+
+
+
+    }
+
+    function Eliminar(Num){
+      NumSerie = Num.value
+      console.log(NumSerie)
+      var username = sessionStorage.getItem('UserPorfile')
+
+            fetch(`http://localhost:3000/DeletePost/${username}/${NumSerie}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                }
+            })
+                .then(res => res.json())
+                .catch(err => {
+                    console.error('Error:', err)
+                    alert("Ocurrio un error, ver la consola")
+                })
+                .then(response => {
+                    console.log(response);
+                    alert(response.mensaje)
+                    location.reload()
+
+                })
+    }
+
+    function Modificar(This){
+      var NumSerie = This.value
+      var username = sessionStorage.getItem('UserPorfile')
+      sessionStorage.setItem("NumSerie", NumSerie)
+      console.log(username)
+      alert(NumSerie)
+
+      location.href="AdminNewPost.html"
+
+    }
+
+    function Liked() {
+
+      var Like = document.getElementById("btn-check-outlined");
+
+      if (Like.checked == true) {
+        console.log("hola")
+      } else {
+        console.log('adios')
+      }
+
+    }
+  </script>
+
+
+</body>
+
+</html>

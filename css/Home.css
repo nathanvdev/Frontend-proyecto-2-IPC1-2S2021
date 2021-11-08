@@ -1,0 +1,202 @@
+body{
+    background-color: rgb(24, 25, 26);
+    font-family: 'Righteous', cursive;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+body::-webkit-scrollbar{
+    width: 10px;
+    background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb{
+    background-color: rgb(242, 54, 52);
+    border-radius: 5px;
+}
+
+.naVEVAR{
+    background-color: rgb(36, 37, 38);
+    height: 80px;
+    text-align: center;
+    float: left;
+}
+
+.naVEVAR h1{
+    padding-left: 200px;
+    margin: 50px;
+    margin-bottom: 0%;
+    margin-top: 0%;
+    text-align: center;
+}
+.close{
+    size: 80px;
+
+    padding-left: 50px;
+}
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: rgb(36, 37, 38);
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    box-shadow: black 0px 80px 30px;
+    float: top;
+    
+}
+
+.sidebar::-webkit-scrollbar{
+    width: 9px;
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+    background-color: rgb(242, 54, 52);
+    border-radius: 100px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 16px;
+    padding-top: 10px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 30px;
+}
+
+.sidebar a.active {
+    background-color: rgb(242, 54, 52);
+    color: white;
+}
+  
+
+.sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+
+.GeneralPost{
+    background-color: rgb(36, 37, 38);
+    height: auto+50px;
+    width: 550px;
+    position: relative;
+    top: 70px;
+    left: 300px;
+    border-radius: 6%;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    box-shadow: black 10px 10px 20px;
+
+}
+
+.NameUser{
+    width: auto;
+    height: 40px;
+    position: relative;
+    margin: 7%;
+    margin-bottom: 0PX;
+    text-align: left;
+    line-height: 40px;
+
+}
+
+.NameUser h3{
+    font-size: 30px;
+}
+
+.datePost{
+    width: auto;
+    padding: 0px;
+    height: 40px;
+    margin: 7%;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    text-align: left;
+    position: relative;
+}
+
+.datePost label{
+    color: #555;
+    font-size: 20px;
+}
+
+.ContentPost{
+    width: auto ;
+    margin: 7%;
+    margin-top: 0%;
+    margin-bottom: 20px;
+    position: relative;
+    align-items: center;
+    overflow: hidden;
+    max-height: 10%;
+    box-shadow: black 0px 0px 20px;
+    top: auto;
+}
+
+.LikesPost{
+    width: auto;
+    height: 50px;
+    margin: 7%;
+    margin-top: 0%;
+    margin-bottom: 10px;
+}
+
+.ContentPost img{
+    width: auto;
+    height: auto;
+}
+
+@supports(object-fit: cover){
+    .ContentPost img{
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+}
+
+.heart-icon {
+    display: inline-block;
+    fill: currentColor;
+    width: 1.0em;
+    height: 1.0em;
+    margin-right: 0.2em;
+    align-content: center;
+}
+  
+.NumLikes{
+    position: relative;
+    width: 100px;
+    height: auto;
+    float: left;
+    margin-left: 15px;
+    color: white;
+    font-size: 25px;
+}
+
+.page-footerS{
+    padding-left: 50px;
+    margin-top: 90px;
+    background-color: rgb(242, 54, 52);
+}
+
+.wrapper a{
+    margin-left: 20px;
+    size: 20px;
+    color: white;
+}
+
+.wrapper i{
+    margin: 20px;
+}
+
+.footer-copyright{
+    color: white;
+    margin-bottom: 10px;
+}
+

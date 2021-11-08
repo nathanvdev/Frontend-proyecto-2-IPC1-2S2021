@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Fronted/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Fronted/css/Users.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+    <title>Modificar Perfil</title>
+</head>
+
+<body onload="ObtenerUsuarios()">
+
+    <nav class="naVEVAR navbar navbar-expand-lg">
+        <h1>Ublog</h1>
+        <h3 style="margin-right: 40px;">Bienvenido</h3>
+        <div class="close">
+            <a href="">
+                <i class="bi bi-box-arrow-left"></i>
+                <label>Cerrar Sesion</label>
+            </a>
+        </div>
+    </nav>
+
+    <div class="sidebar">
+        <a href="Home.html"><i class="large material-icons" style="font-size: 36px;">home</i> <br>Home</a>
+        <a href="NewPost.html"><i class="large material-icons" style="font-size: 36px;">add_to_photos</i><br>Publicar
+            Post</a>
+        <a href="Porfile.html"><i class="large material-icons" style="font-size: 36px;">account_circle</i><br>Mi
+            Perfil</a>
+        <a href="Modify.html"><i class="large material-icons" style="font-size: 36px;">edit</i><br>Modificar Mi
+            Perfil</a>
+        <a class="active" href="Users.html"><i class="large material-icons"
+                style="font-size: 36px;">people</i><br>Usuarios</a>
+        <a href="Uploads.html"><i class="large material-icons" style="font-size: 36px;">file_upload</i><br>Carga
+            Masiva</a>
+        <a href="#about"><i class="large material-icons" style="font-size: 36px;">picture_as_pdf</i><br>Reportes</a>
+    </div>
+
+
+
+    <h2>Listado de Usuarios Registrados</h2>
+    <div class="Tabla">
+        <table class="table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Nombre de Usuario</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Contraseña</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody id="detalles"></tbody>
+        </table>
+    </div>
+
+    </div>
+
+    <footer class="page-footerS">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12" style="margin-bottom: 0px;">
+                    <h5 class="white-text">Acerca De</h5>
+                    <p class="grey-text text-lighten-4">Ublog es un sitio web periódicamente actualizado que recopila
+                        cronológicamente
+                        textos o artículos de uno o varios autores, apareciendo primero el más reciente, donde el autor
+                        conserva
+                        siempre la libertad de dejar publicado lo que crea pertinente. </p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Contáctanos</h5>
+                    <ul class="wrapper">
+                        <li><a href="https://www.facebook.com/VosNathan"><i class="bi bi-facebook"></i>Facebook</a></li>
+                        <li><a href="mailto:nathanvaldez413@gmail.com"><i class="bi bi-at"></i></i>Email</a></li>
+                        <li><a href="https://github.com/vosnathan"><i class="bi bi-github"></i>GitHub</a></li>
+                        <li><a href="https://www.youtube.com/channel/UCuO3svYiU7e_l3w3EDUwDLQ/videos"><i
+                                    class="bi bi-youtube"></i>Youtube</a></li>
+                        <li><a href="https://www.instagram.com/__nathanv/"><i class="bi bi-instagram"></i>Instagram</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © Nathan Valdez 202001568 IPC1 USAC 2S2021
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+        function ObtenerUsuarios() {
+
+            var tabla = document.querySelector('#detalles')
+            var cadena = ''
+
+            fetch('http://192.168.1.7:3000/GetUsers', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                }
+            })
+                .then(res => res.json())
+                .catch(err => {
+                    console.error('Error:', err)
+                    alert("Ocurrio un error, ver la consola")
+                })
+                .then(response => {
+                    console.log(response);
+
+                    var Num = 1
+
+                    response.forEach(element => {
+
+                        console.log(element)
+
+                        if (element.username != "admin") {
+
+                            cadena += `<tr>
+                        <td> ${Num} </td>
+                        <td> ${element.name} </td>
+                        <td> ${element.username} </td>
+                        <td> ${element.email} </td>
+                        <td> ${element.password} </td>
+                        <td> <button value=${element.username} onclick="Eliminar(this)" type="button" class="btn btn-outline-danger">Eliminar</button>
+                        <td> <button value=${element.username} onclick="Modificar(this)" type="button" class="btn btn-outline-info">Modificar</button>
+                        <td> <button value=${element.username} onclick="VerPerfil(this)" type="button" class="btn btn-outline-primary">Ver Publicaciones</button>
+                        </tr>`
+
+                            Num += 1
+                        }
+                    });
+
+
+                    tabla.innerHTML = cadena
+                })
+        }
+
+
+        function Eliminar(Person) {
+            var User = Person.value
+            console.log(User)
+
+            fetch(`http://localhost:3000/DeleteUser/${User}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                }
+            })
+                .then(res => res.json())
+                .catch(err => {
+                    console.error('Error:', err)
+                    alert("Ocurrio un error, ver la consola")
+                })
+                .then(response => {
+                    console.log(response);
+                    alert(response.mensaje)
+                    location.reload()
+
+                })
+        }
+
+        function Modificar(Person) {
+
+            var UserToMod = Person.value
+
+            sessionStorage.setItem("ModUser", UserToMod)
+
+            location.href="AdminModify.html"
+
+        }
+
+        function VerPerfil(Person){
+
+            var UserPorfile = Person.value
+
+            sessionStorage.setItem("UserPorfile", UserPorfile)
+
+            location.href="AdminPorfile.html"
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

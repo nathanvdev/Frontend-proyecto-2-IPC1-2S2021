@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/Fronted/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/Fronted/css/Ranking.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+  <title>Home</title>
+</head>
+
+<body>
+  <nav class="naVEVAR navbar navbar-expand-lg">
+    <h1>Ublog</h1>
+    <h3 style="margin-right: 40px;">Bienvenido</h3>
+    <div class="close">
+      <a href="">
+        <i class="bi bi-box-arrow-left"></i>
+        <label>Cerrar Sesion</label>
+      </a>
+    </div>
+
+  </nav>
+
+
+  <div class="sidebar">
+    <a href="#home"><i class="large material-icons" style="font-size: 36px;">home</i> <br>Home</a>
+    <a href="#news"><i class="large material-icons" style="font-size: 36px;">add_to_photos</i><br>Publicar Post</a>
+    <a href="#contact"><i class="large material-icons" style="font-size: 36px;">account_circle</i><br>Mi Perfil</a>
+    <a href="#about"><i class="large material-icons" style="font-size: 36px;">edit</i><br>Modificar Mi Perfil</a>
+    <a class="active" href="#about"><i class="large material-icons" style="font-size: 36px;">sort</i><br>Ranking</a>
+    <a href="#about"><i class="large material-icons" style="font-size: 36px;">people</i><br>Usuarios</a>
+    <a href="#about"><i class="large material-icons" style="font-size: 36px;">file_upload</i><br>Carga Masiva</a>
+    <a href="#about"><i class="large material-icons" style="font-size: 36px;">picture_as_pdf</i><br>Reportes</a>
+
+  </div>
+  <article class="GeneralPost" style="height: auto;">
+    <div class="NameUser">
+      <h3 style="color: aliceblue;">Nathan Antonio Valdez Valdez</h3>
+    </div>
+    <div class="datePost">
+      <label for="datePost">20/20/2021</label>
+    </div>
+    <div class="ContentPost">
+      <img src="https://imagenpng.com/wp-content/uploads/2019/04/wallpapergatotumblr.jpg" alt="">
+    </div>
+    <div class="LikesPost">
+      <div style="float: left;">
+        <input type="checkbox" class="btn-check" id="btn-check-outlined" onclick="Liked()">
+        <label class="btn btn-outline-primary" for="btn-check-outlined">
+          <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <path
+              d="M91.6 13A28.7 28.7 0 0 0 51 13l-1 1-1-1A28.7 28.7 0 0 0 8.4 53.8l1 1L50 95.3l40.5-40.6 1-1a28.6 28.6 0 0 0 0-40.6z" />
+          </svg>
+          Me Gusta
+        </label>
+      </div>
+      <div>
+        <label class="NumLikes" for="">1234</label>
+      </div>
+    </div>
+  </article>
+
+  <article class="GeneralPost" style="float: left;" style="height: auto;">
+    <div class="NameUser">
+      <h3 style="color: aliceblue;">Nathan Antonio Valdez Valdez</h3>
+    </div>
+    <div class="datePost">
+      <label for="datePost">20/20/2021</label>
+    </div>
+    <div class="ContentPost">
+      <img src="http://www.defondos.com/bulkupload/imagenes-de-gatos/Animales/Gatos/Gatitos_800.jpg" alt="">
+    </div>
+    <div class="LikesPost">
+      <div style="float: left">
+        <input type="checkbox" class="btn-check" id="btn-check-outlined" onclick="Liked()">
+        <label class="btn btn-outline-primary" for="btn-check-outlined">
+          <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <path
+              d="M91.6 13A28.7 28.7 0 0 0 51 13l-1 1-1-1A28.7 28.7 0 0 0 8.4 53.8l1 1L50 95.3l40.5-40.6 1-1a28.6 28.6 0 0 0 0-40.6z" />
+          </svg>
+          Me Gusta
+        </label>
+      </div>
+      <div>
+        <label class="NumLikes" for="">1234</label>
+      </div>
+    </div>
+  </article>
+
+
+
+  <footer class="page-footerS">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12" style="margin-bottom: 0px;">
+          <h5 class="white-text">Acerca De</h5>
+          <p class="grey-text text-lighten-4">Ublog es un sitio web periódicamente actualizado que recopila cronológicamente
+            textos o artículos de uno o varios autores, apareciendo primero el más reciente, donde el autor conserva
+            siempre la libertad de dejar publicado lo que crea pertinente. </p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Contáctanos</h5>
+          <ul class="wrapper">
+            <li><a href="https://www.facebook.com/VosNathan"><i class="bi bi-facebook"></i>Facebook</a></li>
+            <li><a href="mailto:nathanvaldez413@gmail.com"><i class="bi bi-at"></i></i>Email</a></li>
+            <li><a href="https://github.com/vosnathan"><i class="bi bi-github"></i>GitHub</a></li>
+            <li><a href="https://www.youtube.com/channel/UCuO3svYiU7e_l3w3EDUwDLQ/videos"><i
+                  class="bi bi-youtube"></i>Youtube</a></li>
+            <li><a href="https://www.instagram.com/__nathanv/"><i class="bi bi-instagram"></i>Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © Nathan Valdez 202001568 IPC1 USAC 2S2021
+      </div>
+    </div>
+  </footer>
+
+
+
+
+  <script>
+    function Liked() {
+
+      var Like = document.getElementById("btn-check-outlined");
+
+      if (Like.checked == true) {
+        console.log("hola")
+      } else {
+        console.log('adios')
+      }
+
+    }
+  </script>
+
+
+</body>
+
+</html>

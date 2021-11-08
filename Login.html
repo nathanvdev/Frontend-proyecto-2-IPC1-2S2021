@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/Fronted/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Fronted/css/Login.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <div class="cont">
+        <div class="form sign-in">
+            <h2>Bienvenido</h2>
+            <label>
+                <span>NOMBRE DE USUARIO</span>
+                <input type="email" placeholder="carolinavillaloboss" id="LoginUserName" />
+            </label>
+            <label>
+                <span>contraseña</span>
+                <input type="password" placeholder="Password" id="LoginPassword" />
+            </label>
+            <button onclick="SingIn()" type="button" class="submit">Iniciar Sesión</button>
+        </div>
+
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+                    <h3>¿NO TIENES CUENTA? AQUI PUEDES CREAR UNA
+                        ⫱<h3>
+                </div>
+                <div class="img__text m--in">
+                    <h3>SI YA TIENES UNA CUENTA, INICIA SESIÓN ⫱<h3>
+                </div>
+                <div class="img__btn">
+                    <span class="m--up">CREAR CUENTA</span>
+                    <span class="m--in">INICIAR SESIÓN</span>
+                </div>
+            </div>
+
+            <div class="form sign-up">
+                <h2>CREAR CUENTA</h2>
+                <label>
+                    <span>NOMBRE COMPLETO</span>
+                    <input type="text" placeholder="Nombres Y Apellidos" id="SingUpName" />
+                </label>
+                <label>
+                    <span>CORREO ELECTRÓNICO</span>
+                    <input type="email" placeholder="name@example.com" id="SingUpEmail" />
+                </label>
+                <label>
+                    <span>NOMBRE DE USUARIO</span>
+                    <input type="user" placeholder="JuanitoGamer124" id="SingUpUserName" />
+                </label>
+                <label>
+                    <span>CONTRASEÑA</span>
+                    <input type="password" placeholder="Password" id="SingUpPassword" />
+                </label>
+                <label><span>Seleccionar Genero</span></label>
+                <select class="form-select" aria-label="Default select example" id="SingUpGender">
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                </select>
+                <button onclick="SingUp()" type="button" style="margin-top: 20px;" class="submit">CREAR CUENTA</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer-basic">
+        <footer>
+            <div class="social">
+                <a href="#"><i class="icon ion-social-instagram"></i></a>
+                <a href="#"><i class="icon ion-social-snapchat"></i></a>
+                <a href="#"><i class="icon ion-social-twitter"></i></a>
+                <a href="#"><i class="icon ion-social-facebook"></i></a>
+            </div>
+
+            <p class="copyright">Nathan Valdez 202001568 © IPC-1 2S2021</p>
+        </footer>
+    </div>
+
+
+    <script>
+
+        function SingIn() {
+
+            var UserName = document.querySelector('#LoginUserName').value
+            var Password = document.querySelector('#LoginPassword').value
+            var object = {
+                "username": UserName,
+                "password": Password
+            }
+
+            fetch('http://192.168.1.7:3000/Login', {
+                method: 'POST',
+                body: JSON.stringify(object),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                }
+            })
+
+                .then(res => res.json())
+                .catch(err => {
+                    console.error('Error:', err)
+                    alert("Ocurrio un error, ver la consola")
+                })
+
+                .then(response => {
+                    console.log(response);
+                    alert("Bienvenido")
+
+                    if(response.approved){
+
+                        sessionStorage.setItem("Name", response.name)
+                        sessionStorage.setItem("Gender", response.gender)
+                        sessionStorage.setItem("Username", response.username)
+                        sessionStorage.setItem("Email", response.email)
+                        sessionStorage.setItem("Password", response.password)
+                        sessionStorage.setItem("Posts", response.posts)
+
+                        location.href="Home.html"
+                    }
+
+                })
+        }
+
+
+        function SingUp() {
+            var Name = document.querySelector('#SingUpName').value
+            var Email = document.querySelector('#SingUpEmail').value
+            var UserName = document.querySelector('#SingUpUserName').value
+            var Password = document.querySelector('#SingUpPassword').value
+            var Gender = document.querySelector('#SingUpGender').value
+            var object = {
+                "name": Name,
+                "gender": Gender,
+                "username": UserName,
+                "email": Email,
+                "password": Password
+            }
+
+            console.log(object)
+
+            fetch('http://192.168.1.7:3000/NewUser', {
+                method: 'POST',
+                body: JSON.stringify(object),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                }
+            })
+
+                .then(res => res.json())
+                .catch(err => {
+                    console.error('Error:', err)
+                    alert("Ocurrio un error, ver la consola")
+                })
+
+                .then(response => {
+                    console.log(response);
+                    alert(response.mensaje)   
+                })
+        }
+
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.querySelector('.img__btn').addEventListener('click', function () {
+            document.querySelector('.cont').classList.toggle('s--signup');
+        });
+    </script>
+
+</body>
+
+</html>
