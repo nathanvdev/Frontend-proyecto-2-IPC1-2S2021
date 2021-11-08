@@ -144,7 +144,7 @@
             console.log(objeto)
 
             
-            fetch(`http://localhost:3000/ModifyPorfile/${UserToModify}`, {
+            fetch(`https://nathan-backend-proyecto2.herokuapp.com/ModifyPorfile/${UserToModify}`, {
                 method: 'PUT',
                 body: JSON.stringify(objeto),
                 headers: {

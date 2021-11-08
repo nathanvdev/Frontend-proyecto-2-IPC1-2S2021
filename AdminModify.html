@@ -115,7 +115,7 @@
             var usuario = sessionStorage.getItem('ModUser')
             console.log(usuario)
             
-            fetch(`http://192.168.1.7:3000/AdminMod/${usuario}`, {
+            fetch(`https://nathan-backend-proyecto2.herokuapp.com/AdminMod/${usuario}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -162,7 +162,7 @@
             console.log(objeto)
 
 
-            fetch(`http://localhost:3000/ModifyPorfile/${UserToModify}`, {
+            fetch(`https://nathan-backend-proyecto2.herokuapp.com/ModifyPorfile/${UserToModify}`, {
                 method: 'PUT',
                 body: JSON.stringify(objeto),
                 headers: {

@@ -98,7 +98,7 @@
                 "password": Password
             }
 
-            fetch('http://192.168.1.7:3000/Login', {
+            fetch('https://nathan-backend-proyecto2.herokuapp.com/Login', {
                 method: 'POST',
                 body: JSON.stringify(object),
                 headers: {
@@ -149,7 +149,7 @@
 
             console.log(object)
 
-            fetch('http://192.168.1.7:3000/NewUser', {
+            fetch('https://nathan-backend-proyecto2.herokuapp.com/NewUser', {
                 method: 'POST',
                 body: JSON.stringify(object),
                 headers: {
