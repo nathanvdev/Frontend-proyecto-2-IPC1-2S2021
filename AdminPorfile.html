@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/Fronted/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/Fronted/css/Home.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/Home.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -88,7 +88,7 @@
       var AllPosts = document.querySelector('#PostsHere')
       var cadena = ''
 
-      fetch(`http://localhost:3000/PostsUser/${username}`, {
+      fetch(`https://nathan-backend-proyecto2.herokuapp.com/PostsUser/${username}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -186,7 +186,7 @@
       console.log(NumSerie)
       var username = sessionStorage.getItem('UserPorfile')
 
-            fetch(`http://localhost:3000/DeletePost/${username}/${NumSerie}`, {
+            fetch(`https://nathan-backend-proyecto2.herokuapp.com/DeletePost/${username}/${NumSerie}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

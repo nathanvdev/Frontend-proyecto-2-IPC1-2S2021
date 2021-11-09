@@ -8,7 +8,7 @@
 
 body{
     background-color: rgb(22, 26, 28);
-    background-image: url("/Fronted/Media/Fondo\ Login.gif");
+    background-image: url("Media/Fondo\ Login.gif");
     background-repeat: no-repeat;
     background-size: cover;
 }
