@@ -116,7 +116,7 @@ function CargarUsuarios(e) {
         console.log(archivoUser)
        console.log(objeto)
 
-        fetch('https://backend-proyecto2-ipc1-2s2021.herokuapp.com//UploadUsers', {
+        fetch('https://backend-proyecto2-ipc1-2s2021.herokuapp.com/UploadUsers', {
             method: 'POST',
             body: JSON.stringify(objeto),
             headers:{
@@ -156,7 +156,7 @@ function CargarUsuarios(e) {
 
        console.log(objeto)
 
-            fetch('https://backend-proyecto2-ipc1-2s2021.herokuapp.com//UploadPost', {
+            fetch('https://backend-proyecto2-ipc1-2s2021.herokuapp.com/UploadPost', {
             method: 'POST',
             body: JSON.stringify(objeto),
             headers:{

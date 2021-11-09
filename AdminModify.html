@@ -115,7 +115,7 @@
             var usuario = sessionStorage.getItem('ModUser')
             console.log(usuario)
             
-            fetch(`https://backend-proyecto2-ipc1-2s2021.herokuapp.com//AdminMod/${usuario}`, {
+            fetch(`https://backend-proyecto2-ipc1-2s2021.herokuapp.com/AdminMod/${usuario}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -162,7 +162,7 @@
             console.log(objeto)
 
 
-            fetch(`https://backend-proyecto2-ipc1-2s2021.herokuapp.com//ModifyPorfile/${UserToModify}`, {
+            fetch(`https://backend-proyecto2-ipc1-2s2021.herokuapp.com/ModifyPorfile/${UserToModify}`, {
                 method: 'PUT',
                 body: JSON.stringify(objeto),
                 headers: {

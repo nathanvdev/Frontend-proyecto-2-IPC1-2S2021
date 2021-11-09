@@ -102,7 +102,7 @@
             var tabla = document.querySelector('#detalles')
             var cadena = ''
 
-            fetch('https://backend-proyecto2-ipc1-2s2021.herokuapp.com//GetUsers', {
+            fetch('https://backend-proyecto2-ipc1-2s2021.herokuapp.com/GetUsers', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -150,7 +150,7 @@
             var User = Person.value
             console.log(User)
 
-            fetch(`https://backend-proyecto2-ipc1-2s2021.herokuapp.com//DeleteUser/${User}`, {
+            fetch(`https://backend-proyecto2-ipc1-2s2021.herokuapp.com/DeleteUser/${User}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
