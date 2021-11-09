@@ -107,7 +107,7 @@
             var NumSerie = sessionStorage.getItem('NumSerie')
 
             var usuario = sessionStorage.buscar
-            fetch(`https://nathan-backend-proyecto2.herokuapp.com/AdminNewPost/${usuario}/${NumSerie}`, {
+            fetch(`https://backend-proyecto2-ipc1-2s2021.herokuapp.com//AdminNewPost/${usuario}/${NumSerie}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -152,7 +152,7 @@
             console.log(objeto)
 
 
-            fetch('https://nathan-backend-proyecto2.herokuapp.com/NewPost', {
+            fetch('https://backend-proyecto2-ipc1-2s2021.herokuapp.com//NewPost', {
                 method: 'POST',
                 body: JSON.stringify(objeto),
                 headers: {

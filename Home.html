@@ -87,7 +87,7 @@
       var AllPosts = document.querySelector('#PostsHere')
       var cadena = ''
 
-      fetch('https://nathan-backend-proyecto2.herokuapp.com/Home', {
+      fetch('https://backend-proyecto2-ipc1-2s2021.herokuapp.com//Home', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -189,7 +189,7 @@
             }
             console.log(objeto)
 
-      fetch(`https://nathan-backend-proyecto2.herokuapp.com/Like/${serieNumber.value}`, {
+      fetch(`https://backend-proyecto2-ipc1-2s2021.herokuapp.com//Like/${serieNumber.value}`, {
             method: 'PUT',
             body: JSON.stringify(objeto),
             headers:{
